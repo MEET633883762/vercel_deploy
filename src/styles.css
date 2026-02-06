@@ -1,0 +1,392 @@
+/* =========================================
+   NutriVision – Clean Stable UI
+   Bootstrap-first styling + subtle polish
+========================================= */
+
+:root {
+  --nv-accent: #18a77b;
+  --nv-accent-2: #15b981;
+}
+
+/* ---------- BASE ---------- */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(
+      1200px 600px at 10% -10%,
+      rgba(24, 167, 123, 0.18),
+      transparent 55%
+    ),
+    radial-gradient(
+      900px 500px at 95% 0%,
+      rgba(21, 185, 129, 0.15),
+      transparent 60%
+    ),
+    var(--bs-body-bg);
+}
+
+/* ---------- BRAND ---------- */
+.nv-brand-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--nv-accent), var(--nv-accent-2));
+  color: white;
+  box-shadow: none; /* removed heavy border feel */
+}
+
+/* ---------- CARDS ---------- */
+.nv-card {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  border-radius: 18px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.nv-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
+}
+
+[data-bs-theme="dark"] .nv-card {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+}
+
+.nv-muted {
+  opacity: 0.8;
+}
+
+/* ---------- IMAGE PREVIEW ---------- */
+.nv-preview {
+  max-width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.nv-preview:hover {
+  transform: scale(1.01);
+}
+
+[data-bs-theme="dark"] .nv-preview {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+  border-radius: 12px;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-success {
+  background: var(--nv-accent);
+  border: none;
+}
+
+.btn-success:hover {
+  background: #15946d;
+  transform: translateY(-1px);
+}
+
+.btn-outline-primary {
+  border-color: var(--nv-accent);
+  color: var(--nv-accent);
+}
+
+.btn-outline-primary:hover {
+  background: var(--nv-accent);
+  color: white;
+}
+
+/* ---------- BUTTON LOADING ---------- */
+.btn.loading {
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.btn.loading::after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-top-color: white;
+  border-radius: 50%;
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+/* ---------- CHIPS ---------- */
+.nv-chip {
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.02);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.nv-chip:hover {
+  border-color: var(--nv-accent);
+  background: rgba(24, 167, 123, 0.08);
+}
+
+.nv-chip.active {
+  border: 2px solid var(--nv-accent);
+  background: rgba(24, 167, 123, 0.1);
+}
+
+[data-bs-theme="dark"] .nv-chip {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ---------- MACRO STATS ---------- */
+.nv-macro {
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px;
+  transition: transform 0.2s ease;
+}
+
+.nv-macro:hover {
+  transform: translateY(-1px);
+}
+
+[data-bs-theme="dark"] .nv-macro {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* =========================================
+   DASHBOARD SECTION
+========================================= */
+
+.page {
+  width: 100%;
+}
+
+.muted {
+  opacity: 0.8;
+}
+
+.big {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+/* Top cards grid */
+.gridTopCards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 992px) {
+  .gridTopCards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  .gridTopCards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Metric card */
+.metricCard {
+  border-radius: 16px;
+  padding: 14px;
+  background: var(--bs-body-bg);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+  transition: transform 0.2s ease;
+}
+
+.metricCard:hover {
+  transform: translateY(-2px);
+}
+
+[data-bs-theme="dark"] .metricCard {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.metricTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.metricIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(24, 167, 123, 0.12);
+  color: var(--nv-accent);
+}
+
+.metricLabel {
+  font-weight: 600;
+}
+
+.metricValue {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+/* Progress */
+.metricBar {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+[data-bs-theme="dark"] .metricBar {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.metricFill {
+  height: 100%;
+  background: linear-gradient(135deg, var(--nv-accent), var(--nv-accent-2));
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+/* Chart grid */
+.gridCharts {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+@media (max-width: 992px) {
+  .gridCharts {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chartCard,
+.mealsCard {
+  border-radius: 18px;
+  padding: 14px;
+  background: var(--bs-body-bg);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+  transition: transform 0.2s ease;
+}
+
+.chartCard:hover,
+.mealsCard:hover {
+  transform: translateY(-2px);
+}
+
+.chartWrap {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+/* Meals */
+.mealsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.mealsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mealRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease;
+}
+
+.mealRow:hover {
+  transform: translateY(-1px);
+}
+
+.mealAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.mealPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--nv-accent);
+}
+
+.mealLeft {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.mealTopLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.mealCals {
+  font-weight: 700;
+}
+
+.empty {
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px dashed rgba(0, 0, 0, 0.18);
+  color: rgba(0, 0, 0, 0.6);
+}
